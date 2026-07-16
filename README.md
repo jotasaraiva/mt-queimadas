@@ -1,6 +1,6 @@
 # MT Queimadas
 
-Painel interativo para visualização de focos de incêndio em Unidades de Conservação no estado do Mato Grosso.
+Painel interativo para visualização de focos de incêndio em Unidades de Conservação.
 
 ## Funcionalidades
 

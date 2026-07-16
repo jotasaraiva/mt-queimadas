@@ -1,7 +1,7 @@
 [project]
 name = "mt-queimadas"
 version = "0.1.0"
-description = "Painel de dados para demonstração de focos de incêndios no estado do Mato Grosso, utilizando informações de Unidades de Conservação (UCs) do ICMBio/MMA e dados do Terrabrasilis, plataforma do INPE."
+description = "Painel de dados para demonstração de focos de incêndios no Brasil, utilizando informações de Unidades de Conservação (UCs) do ICMBio/MMA e dados do Terrabrasilis, plataforma do INPE."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [

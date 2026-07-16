@@ -42,7 +42,7 @@ class App:
 
         st.sidebar.title("MT Queimadas")
         st.sidebar.markdown("""
-        Painel de dados para demonstração de focos de incêndios no estado do Mato Grosso, 
+        Painel de dados para demonstração de focos de incêndios, 
         utilizando informações de Unidades de Conservação (UCs) do ICMBio/MMA e dados do Terrabrasilis, 
         plataforma do INPE.
         """)
@@ -53,13 +53,13 @@ class App:
         
         if fires is not None:
 
-            names = sorted(fires["name"].dropna().unique().tolist())
+            uf = sorted(fires["uf"].dropna().unique().tolist())
             esferas = sorted(fires["esfera"].dropna().unique().tolist())
             municipios = sorted(fires["municipio"].dropna().unique().tolist())
 
-            selected_names = st.sidebar.multiselect(
+            selected_uf = st.sidebar.multiselect(
                 "Unidade de Conservação",
-                options=names,
+                options=uf,
                 default=[],
             )
 
@@ -78,13 +78,13 @@ class App:
             # Apply filters
             fires_filtered = fires.copy()
 
-            selected_names = selected_names or None
+            selected_uf = selected_uf or None
             selected_esferas = selected_esferas or None
             selected_municipios = selected_municipios or None
 
-            if selected_names is not None:
+            if selected_uf is not None:
                 fires_filtered = fires_filtered[
-                    fires_filtered["name"].isin(selected_names)
+                    fires_filtered["uf"].isin(selected_uf)
                 ]
 
             if selected_esferas is not None:
@@ -125,7 +125,7 @@ class App:
                 geometry="uc_geometry", 
                 crs=self.crs
             )
-            m.add_gdf(uc_gdf, layer_name="Unidades de Conservação")
+            m.add_gdf(uc_gdf, layer_name="UFs")
             m.add_basemap("HYBRID")
             m.add_wms_layer(
                 url="https://terrabrasilis.dpi.inpe.br/geoserver/prodes-brasil-nb/ows",
